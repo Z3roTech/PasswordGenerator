@@ -129,7 +129,7 @@ namespace ZeroCode
         /// <exception cref="InvalidOperationException"></exception>
         internal static IPasswordGenerator UseLowerCase(IPasswordGenerator generator)
         {
-            if (generator is not IConfigurablePasswordGenerator configurable)
+            if (!(generator is IConfigurablePasswordGenerator configurable))
                 throw new InvalidOperationException("This generator can not be configure!");
 
             return configurable.UseLowerCase();
@@ -143,7 +143,7 @@ namespace ZeroCode
         /// <exception cref="InvalidOperationException"></exception>
         internal static IPasswordGenerator UseUpperCase(IPasswordGenerator generator)
         {
-            if (generator is not IConfigurablePasswordGenerator configurable)
+            if (!(generator is IConfigurablePasswordGenerator configurable))
                 throw new InvalidOperationException("This generator can not be configure!");
 
             return configurable.UseUpperCase();
@@ -157,7 +157,7 @@ namespace ZeroCode
         /// <exception cref="InvalidOperationException"></exception>
         internal static IPasswordGenerator UseDigits(IPasswordGenerator generator)
         {
-            if (generator is not IConfigurablePasswordGenerator configurable)
+            if (!(generator is IConfigurablePasswordGenerator configurable))
                 throw new InvalidOperationException("This generator can not be configure!");
 
             return configurable.UseDigits();
@@ -171,7 +171,7 @@ namespace ZeroCode
         /// <exception cref="InvalidOperationException"></exception>
         internal static IPasswordGenerator UseSpecialChars(IPasswordGenerator generator)
         {
-            if (generator is not IConfigurablePasswordGenerator configurable)
+            if (!(generator is IConfigurablePasswordGenerator configurable))
                 throw new InvalidOperationException("This generator can not be configure!");
 
             return configurable.UseSpecialChars();

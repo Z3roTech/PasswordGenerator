@@ -33,15 +33,12 @@ namespace ZeroCode
         public string Generate(int length = PasswordGenerator.LowSecurityPasswordLength)
         {
             var passwordChars = ConfiguredChars.SelectMany(chars => chars).ToArray();
-            switch (length)
-            {
-                case <= 0:
-                    throw new ArgumentOutOfRangeException(nameof(length), "Length of the password can not be negative");
+            if (length <= 0)
+                throw new ArgumentOutOfRangeException(nameof(length), "Length of the password can not be negative");
 
-                case < PasswordGenerator.LowSecurityPasswordLength:
-                    throw new ArgumentOutOfRangeException(nameof(length),
-                        $"Length of the password must be more then {PasswordGenerator.LowSecurityPasswordLength}");
-            }
+            if (length <= PasswordGenerator.LowSecurityPasswordLength)
+                throw new ArgumentOutOfRangeException(nameof(length),
+                    $"Length of the password must be more then {PasswordGenerator.LowSecurityPasswordLength}");
 
             var passwordBuilder = new StringBuilder(length);
             for (var i = 0; i < length; i++)
